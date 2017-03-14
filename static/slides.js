@@ -34,3 +34,8 @@ document.onkeydown = function (e) {
   }
 
 };
+
+var numElements = document.getElementsByClassName('numberText');
+for (i in numElements) {
+  numElements[i].innerHTML = (parseInt(i) + 1) + '/' + numElements.length;
+}
