@@ -86,7 +86,7 @@ function d3_draw_chart_with_words(properties) {
 			h_spacing = 120,
 			h_l_margin = 58,
 			h_r_margin = 300,
-			label_x_position = 210;
+			label_x_position = 230;
 
 		var max_no_of_bullets = Math.max(list_of_spellings.length, list_of_phonemes.length),
 			height = (max_no_of_bullets - 1)*v_spacing + v_margin*2 + 5,

@@ -4,26 +4,116 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="static/reset.css">
 		<link rel="stylesheet" type="text/css" href="static/main.css">
+		<link rel="stylesheet" type="text/css" href="static/slides.css">
 		<script type="text/javascript" src="static/d3.min.js" defer></script>
 		<script type="text/javascript" src="static/functions.js" defer></script> 
 		<script type="text/javascript" src="static/draw_main_page.js" defer></script>
+		<script type="text/javascript" src="static/slides.js" defer></script>
 	</head>
 
 	<body>
-		<content>
-			<h1>Spelling to Phoneme Mappings</h1>
-			<p>
-				People always talk about how 'phonetic' a given language is, or what it is about English spelling that is so much worse than, say, Polish or Italian. Here, I've made a visualisation using D3.js to try to demonstrate what people are really talking about when they say a language is 'phonetic' or otherwise, and just how bad English spelling is compared to a few other languages.
-			</p>
-			<div id="example_1" class="d3_content"></div>
-			<div id="example_2" class="d3_content"></div>
-			<div id="polish_vowels" class="d3_content"></div>
-			<div id="italian_vowels" class="d3_content"></div>
-			<div id="german_vowels" class="d3_content"></div>
-			<div id="english_vowels" class="d3_content"></div>
-			<p>
-				These diagrams have been generated automatically using D3.js from data files which are simply lists of spelling to phoneme mappings. If you'd like a language to be included here and you have the knowledge to create a list of spelling to phoneme mappings for me to feed in to my program, I'd be very happy to create a similar diagram for your language.
-			</p>
-		</content>
+		<h1>Spelling to Phoneme Mappings</h1>
+		<div class="slideshow-container">
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<div class="mySlides fade">
+				<div class="numberText">1</div>
+				<p>
+					People talk about how 'phonetic' a given language is, or why English spelling is so much worse than, say, Polish or Italian. This is a visualisation made using D3.js to demonstrate what people are really talking about when they say a language is 'phonetic' or otherwise, and just how bad English spelling is compared to a few other languages.
+				</p>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">2</div>
+				<p>
+					This first example is from English. It shows how the same sound (written as /dʒ/ in IPA) can be signified using both 'g', and 'j'.
+				</p>
+				<p>
+					Hover over any of the letters or links to see example words using them.
+				</p>
+				<h2>'g'/'j' Example</h2>
+				<div class="svgContainer" id="example_1" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">3</div>
+				<p>
+					Here is a second example from English, showing how different sounds may be written with the same letters. In this case the letter 'a' can be used to signify the sounds /æ/, /ɛ/, and /eɪ/.
+				</p>
+				<p>
+					Hover over the letters or links to see example words from English using these sounds.
+				</p>
+				<h2>'a' Example</h2>
+				<div class="svgContainer" id="example_2" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">4</div>
+				<p>
+					This diagram shows how the distinctive vowel sounds of Polish map to the letters used to write them down.
+				</p>
+				<p>
+					Polish is an example of a language with a very 'phonetic' writing system - there is almost entirely a one to one correspondence between the sounds in the language and the symbols used to write them. It is the sound /u/ which can be written using two different symbols.
+				</p>
+				<p>
+					This means that you can always tell the pronunciation of a word from the spelling in Polish, but you cannot necessarily tell the spelling from the pronunciation.
+				</p>
+				<h2>Polish Vowels</h2>
+				<div class="svgContainer" id="polish_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">5</div>
+				<p>
+					Next, Italian. The diagram below shows that Italian has the opposite issue to Polish - whereas Polish had one case in which the same sound was written with two possible symbols, Italian has several cases where a single symbol is used to denote two different vowel sounds in an unpredictable manner.
+				</p>
+				<p>
+					This means that in Italian you can reliable write vowels based on their pronuciation, but you cannot necessarily pronounce words simply based on their spelling.
+				</p>
+				<h2>Italian Vowels</h2>
+				<div class="svgContainer" id="italian_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">6</div>
+				<p>
+					German has many more distinctive vowel sounds than either Italian or Polish.
+				</p>
+				<p>
+					German is also less 'phonetic' in its spelling, having many to one correspondences in both directions. This means that you cannot reliably predict the spelling of a word based on its pronunciation, nor can you always predict pronunciation based on spelling.
+				</p>
+				<p>
+					Please hover over the various spelling symbols and sound symbols to see examples words.
+				</p>
+				<h2>German Vowels</h2>
+				<div class="svgContainer" id="german_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">7</div>
+				<p>
+					Finally, we come to the mess that is English spelling. As you can see, English also has a larger inventory of distinctive vowel sounds, similarly to German.
+				</p>
+				<p>
+					English, like German, has many to one correspondences going in both directions, but it typically has many more links in each case, meaning that it is much harder in English to guess the spelling of a word from its pronuncation and likewise difficult to guess the pronunciation of a word simply from its spelling.
+				</p>
+				<p>
+					In some cases, there may be rules which help to predict which correspondence applies, but these are by no means foolproof. Also note that I have included in this diagram only the correspondences which form a pattern over several example cases. I haven't included correspondences for which there was only a single example or where the word was very obviously a foreign loan word.
+				</p>
+				<h2>English Vowels</h2>
+				<div class="svgContainer" id="english_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText">8</div>
+				<p>
+					These diagrams have been generated automatically using D3.js from data files which are simply lists of spelling to phoneme mappings. If you'd like a language to be included here and you have the knowledge to create a list of spelling to phoneme mappings for me to feed in to my program, I'd be very happy to create a similar diagram for your language.
+				</p>
+			</div>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+		<div style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(4)"></span>
+			<span class="dot" onclick="currentSlide(5)"></span>
+			<span class="dot" onclick="currentSlide(6)"></span>
+			<span class="dot" onclick="currentSlide(7)"></span>
+			<span class="dot" onclick="currentSlide(8)"></span>
+		</div>
 	</body>
 </html>
