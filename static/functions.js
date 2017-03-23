@@ -1,15 +1,15 @@
-d3.selection.prototype.moveToFront = function() {  
+d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
     this.parentNode.appendChild(this);
   });
 };
 
-d3.selection.prototype.moveToBack = function() {  
-    return this.each(function() { 
-        var firstChild = this.parentNode.firstChild; 
-        if (firstChild) { 
-            this.parentNode.insertBefore(this, firstChild); 
-        } 
+d3.selection.prototype.moveToBack = function() {
+    return this.each(function() {
+        var firstChild = this.parentNode.firstChild;
+        if (firstChild) {
+            this.parentNode.insertBefore(this, firstChild);
+        }
     });
 };
 
@@ -17,27 +17,35 @@ function d3_make_bipartite_graph(tsv_file, properties) {
 	d3.tsv(tsv_file, d3_draw_chart_with_words(properties));
 };
 
+function render_label_text(d, properties) {
+	if (properties.no_translation) {
+		return "'" + d.word_s + "' - /" + d.word_p + "/";
+	} else {
+		return "'" + d.word_s + "' - /" + d.word_p + "/ - " + d.word_tr;
+	}
+}
+
 function d3_draw_chart_with_words(properties) {
 	return function (data) {
 
 		function prepare_data (data) {
-			
+
 			if (properties.spellings_order) {
 				var list_of_spellings = properties.spellings_order.split(", ");
 			}
-			
+
 			else {
 				var list_of_spellings = [];
 			}
-			
+
 			if (properties.phonemes_order) {
 				var list_of_phonemes = properties.phonemes_order.split(" ")
 			}
-			
+
 			else {
 				var list_of_phonemes = [];
 			}
-			
+
 			var list_of_links = data;
 			for (var i = 0; i < data.length; i++) {
 				if (list_of_spellings.indexOf(data[i].spelling) < 0) {
@@ -55,10 +63,10 @@ function d3_draw_chart_with_words(properties) {
 					return list_of_spellings.indexOf(a.spelling) - list_of_spellings.indexOf(b.spelling);
 			})
 			}
-			
+
 			var map_of_spelling_links = list_of_links.map(function (e) { return e.spelling; });
 			var map_of_phoneme_links = list_of_links.map(function (e) { return e.phoneme; });
-			
+
 			//this bit sorts the phoneme list so that the phonemes are ordered by their first appearance in the list of links
 			list_of_phonemes.sort(function (a, b) {
 				var phoneme_index_in_links = map_of_phoneme_links.indexOf(a);
@@ -106,7 +114,7 @@ function d3_draw_chart_with_words(properties) {
 		}
 
 		function get_phoneme_y(phoneme) {
-			return list_of_phonemes.indexOf(phoneme)*right_v_spacing + v_margin;			
+			return list_of_phonemes.indexOf(phoneme)*right_v_spacing + v_margin;
 		}
 
 		function get_phoneme_y_for_text(phoneme) {
@@ -195,7 +203,7 @@ function d3_draw_chart_with_words(properties) {
 			 .attr("opacity", 1);
 
 		if (properties.example) {
-			
+
 		}
 
 		else {
@@ -221,7 +229,7 @@ function d3_draw_chart_with_words(properties) {
 				svgContainer.append("text")
 					.attr("x", label_x_position)
 					.attr("y", get_phoneme_y_for_text(d.phoneme))
-					.text("'" + d.word_s + "' - /" + d.word_p + "/ - " + d.word_tr)
+					.text(render_label_text(d, properties))
 					.classed("example_words", true);
 			})
 
@@ -244,7 +252,7 @@ function d3_draw_chart_with_words(properties) {
 						svgContainer.append("text")
 							.attr("x", label_x_position)
 							.attr("y", get_spelling_y_for_text(list_of_links[j].spelling))
-							.text("'" + list_of_links[j].word_s + "' - \n/" + list_of_links[j].word_p + "/ - " + list_of_links[j].word_tr)
+							.text(render_label_text(list_of_links[j], properties))
 							.classed("example_words", true);
 					}
 				}
@@ -270,7 +278,7 @@ function d3_draw_chart_with_words(properties) {
 						svgContainer.append("text")
 							.attr("x", label_x_position)
 							.attr("y", get_phoneme_y_for_text(list_of_links[j].phoneme))
-							.text("'" + list_of_links[j].word_s + "' - /" + list_of_links[j].word_p + "/ - " + list_of_links[j].word_tr)
+							.text(render_label_text(list_of_links[j], properties))
 							.classed("example_words", true);
 					}
 				}
@@ -371,7 +379,7 @@ function d3_draw_force(properties) {
 			nodes.enter()
 				.append("text")
 				.call(force.drag)
-				.attr("class", "node")	
+				.attr("class", "node")
 				.text(function(d) {return d.node})
 				.attr("fill", function(d) {if (d.group == "spelling") {return "red";}
 										   else {return "blue";}
