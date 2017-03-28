@@ -1,1 +1,1 @@
-aws s3 sync . s3://spelling-phoneme --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --exclude '.git/*' --exclude upload_to_aws.sh --exclude .DS_Store --exclude '*/.DS_Store'
+aws s3 sync . s3://spelling-phoneme --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --exclude '.git/*' --exclude upload_to_aws.sh --exclude .DS_Store --exclude '*/.DS_Store' --exclude 'data/deprecated/*' --exclude data/excel_file_new.xlsx --exclude 'graphviz/*'

@@ -1,0 +1,1 @@
+dot -T png -O english_vowels_shortened.txt

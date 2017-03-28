@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="static/reset.css">
+		<link rel="stylesheet" type="text/css" href="static/main.css">
+		<link rel="stylesheet" type="text/css" href="static/slides.css">
+		<script type="text/javascript" src="static/d3.min.js" defer></script>
+		<script type="text/javascript" src="static/functions.js" defer></script>
+		<script type="text/javascript" src="static/draw_main_page.js" defer></script>
+		<script type="text/javascript" src="static/slides.js" defer></script>
+	</head>
+
+	<body>
+		<h1>Spelling to Phoneme Mappings</h1>
+		<div class="slideshow-container">
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>'g'/'j' Example</h2>
+				<div class="svgContainer" id="example_1" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>'a' Example</h2>
+				<div class="svgContainer" id="example_2" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>Polish Vowels</h2>
+				<div class="svgContainer" id="polish_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>Italian Vowels</h2>
+				<div class="svgContainer" id="italian_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>German Vowels</h2>
+				<div class="svgContainer" id="german_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+				<h2>English Vowels</h2>
+				<div class="svgContainer" id="english_vowels" class="d3_content"></div>
+			</div>
+			<div class="mySlides fade">
+				<div class="numberText"></div>
+			</div>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+		<div style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(4)"></span>
+			<span class="dot" onclick="currentSlide(5)"></span>
+			<span class="dot" onclick="currentSlide(6)"></span>
+			<span class="dot" onclick="currentSlide(7)"></span>
+			<span class="dot" onclick="currentSlide(8)"></span>
+		</div>
+	</body>
+</html>
