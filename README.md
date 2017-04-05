@@ -1,5 +1,5 @@
 # spelling_phoneme
-Spelling phoneme is a static website with an explanation and  visualisation
+Spelling_phoneme is a static website with an explanation and  visualisation
 about the way different languages map their sounds to spelling systems.
 
 People talk about how 'phonetic' a given language is, or why English spelling
